@@ -64,6 +64,8 @@ export default {
   },
   methods: {
     drawMap: function () {
+      var test = typeof window.require.on
+      console.log('typeof test: ' + test)
       loadModules([
         'esri/Map',
         'esri/views/MapView'

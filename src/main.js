@@ -1,17 +1,17 @@
 /* eslint-disable */
+import 'es6-promise/auto'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import LegoBootstrap from './legobootstrap'
 import App from './components/App.vue'
 import routes from './routes/routes'
-import 'es6-promise/auto'
 import axios from 'axios'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import './polyfill'
+// import './polyfill'
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
