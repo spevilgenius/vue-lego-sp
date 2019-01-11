@@ -32,8 +32,7 @@
 </template>
 <script>
 /* eslint-disable */
-import { loadModules } from 'esri-loader'
-var instance = null
+// import { loadModules } from 'esri-loader'
 var map
 export default {
   name: 'shop',
@@ -56,60 +55,91 @@ export default {
       isdev: true,
       message: null,
       count: 0,
-      total: 0
+      total: 0,
+      emap: null,
+      redicon: null,
+      blackicon: null
     }
   },
   created: function () {
-    instance = this
+    
   },
   methods: {
     drawMap: function () {
-      var test = typeof window.require.on
-      console.log('typeof test: ' + test)
-      loadModules([
+      this.emap = L.map('viewDiv').setView([36.783862, -76.099385], 7);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(this.emap);
+
+      this.redicon = L.icon({
+        iconUrl: '/sites/dpg/SiteAssets/html/static/img/LegoRed1x1.png',
+        iconSize: [40, 40],
+        iconAnchor: [20, 20],
+        popupAnchor: [0, 40],
+      })
+
+      this.blackicon = L.icon({
+        iconUrl: '/sites/dpg/SiteAssets/html/static/img/LegoBlack1x1.png',
+        iconSize: [40, 40],
+        iconAnchor: [20, 20],
+        popupAnchor: [0, 40],
+      })
+
+      L.marker([40.088270, -75.391740], { icon: this.redicon }).bindPopup('<div class="redPopupPanel">I am cool right!</div>', { className: 'redPopup'}).addTo(this.emap)
+
+      L.marker([38.863340, -77.060500], { icon: this.blackicon }).bindPopup('<div class="blackPopupPanel">I am cool right!</div>', { className: 'blackPopup' }).addTo(this.emap)
+
+      L.marker([38.640580, -77.295220], { icon: this.redicon }).bindPopup('<div class="redPopupPanel">I am cool right!</div>', { className: 'redPopup' }).addTo(this.emap)
+
+      L.marker([38.917370, -77.220760], { icon: this.blackicon }).bindPopup('<div class="blackPopupPanel">I am cool right!</div>', { className: 'blackPopup' }).addTo(this.emap)
+    },
+    drawEsri: function () {
+      esriLoader.loadModules([
         'esri/Map',
         'esri/views/MapView'
-      ], {
-          // use a specific version instead of latest 4.x
-          url: 'https://js.arcgis.com/4.10/'
-        }).then(([Map, MapView]) => {
-          console.log('Modules loaded!')
-          map = new Map({
-            basemap: 'streets'
-          })
-
-          const view = new MapView({
-            container: 'viewDiv',
-            map,
-            zoom: 3,
-            center: [0, 0] // longitude, latitude
-          })
+      ])
+      .then(([Map, MapView]) => {
+        console.log('modules loaded from esri')
+        map = new Map({
+          basemap: 'streets'
         })
+
+        const view = new MapView({
+          container: 'viewDiv',
+          map,
+          zoom: 3,
+          center: [0, 0]
+        })
+
+        return view
+      })
     },
     setSearchpopup: function () {
       this.$refs['viewmodal'].show()
     },
     hidepopup: function () {
-      this.$refs['missionmodal'].hide()
+      this.$refs['storemodal'].hide()
     },
     addStore: function () {
       alert('Add Store for point at ' + this.latitude + ', ' + this.longitude)
     }
   },
-  mounted: function () {
+  async mounted() {
     console.log('component mounted')
-    instance.drawMap()
+    this.drawMap()
+    // this.drawEsri()
   }
 }
 </script>
 <style scoped>
   #mapwrapper {
-    height: 100vh;
+    height: 90vh;
     width: 100%;
   }
 
   #toolbar {
-    height: 10vh;
+    height: 5vh;
     width: 100%;
   }
 
@@ -118,7 +148,7 @@ export default {
   }
 
   #viewDiv {
-    height: 90vh;
+    height: 85vh;
     width: 100%;
     z-index: 100;
   }

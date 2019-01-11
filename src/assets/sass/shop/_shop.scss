@@ -12,3 +12,78 @@
   border-radius: 0.3rem;
   outline: 0;
 }
+
+.leaflet-popup-tip {
+  background: transparent;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: transparent;
+  color: #333;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  border: none;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  font: 20px Tahoma, Verdana, sans-serif;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  background: transparent;
+  line-height: 38px;
+}
+
+.redPopup {
+  background: url('/sites/dpg/SiteAssets/html/static/img/LegoRed1x1.png');
+  background-repeat: repeat-x, repeat-y;
+  width: 160px;
+  height: 160px;
+  top: -60px;
+  left: 20px !important;
+  position: relative;
+}
+
+.redPopupPanel {
+  background-color: #EE4236;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 160px;
+  height: 120px;
+  text-align: center;
+  word-wrap: normal;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.blackPopup {
+  background: url('/sites/dpg/SiteAssets/html/static/img/LegoBlack1x1.png');
+  background-repeat: repeat-x, repeat-y;
+  width: 160px;
+  height: 160px;
+  top: -60px;
+  left: 20px !important;
+  position: relative;
+}
+
+.blackPopupPanel {
+  background-color: #000000;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 160px;
+  height: 120px;
+  text-align: center;
+  word-wrap: normal;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}

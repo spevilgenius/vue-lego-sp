@@ -11,8 +11,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-// import './polyfill'
-
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(LegoBootstrap)
@@ -23,12 +21,6 @@ const router = new VueRouter({
   routes, // short for routes: routes
   linkActiveClass: 'active'
 })
-
-// preload the ArcGIS API
-// const options = {
-// url: 'https://js.arcgis.com/4.10/'
-// }
-// loadScript(options)
 
 new Vue ({
   el: '#legoapp',
