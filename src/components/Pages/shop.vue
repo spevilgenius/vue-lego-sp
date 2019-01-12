@@ -86,13 +86,13 @@ export default {
         popupAnchor: [0, 40],
       })
 
-      L.marker([40.088270, -75.391740], { icon: this.redicon }).bindPopup('<div class="redPopupPanel">I am cool right!</div>', { className: 'redPopup'}).addTo(this.emap)
+      L.marker([40.088270, -75.391740], { icon: this.redicon }).bindPopup('<div class="redPopupPanel">King of Prussia Mall. 160 N Gulph Rd #1150, King of Prussia, PA 19406, USA</div>', { className: 'redPopup'}).addTo(this.emap)
 
-      L.marker([38.863340, -77.060500], { icon: this.blackicon }).bindPopup('<div class="blackPopupPanel">I am cool right!</div>', { className: 'blackPopup' }).addTo(this.emap)
+      L.marker([38.863340, -77.060500], { icon: this.blackicon }).bindPopup('<div class="blackPopupPanel">Fashion Centre. 4907, 1100 S Hayes St #0G07B, Arlington, VA 22202, USA</div>', { className: 'blackPopup' }).addTo(this.emap)
 
-      L.marker([38.640580, -77.295220], { icon: this.redicon }).bindPopup('<div class="redPopupPanel">I am cool right!</div>', { className: 'redPopup' }).addTo(this.emap)
+      L.marker([38.640580, -77.295220], { icon: this.redicon }).bindPopup('<div class="redPopupPanel">Potomac Mills. 2700 Potomac Mills Cir #767, Woodbridge, VA 22192- 4673, USA</div>', { className: 'redPopup' }).addTo(this.emap)
 
-      L.marker([38.917370, -77.220760], { icon: this.blackicon }).bindPopup('<div class="blackPopupPanel">I am cool right!</div>', { className: 'blackPopup' }).addTo(this.emap)
+      L.marker([38.917370, -77.220760], { icon: this.blackicon }).bindPopup('<div class="blackPopupPanel">Tysons, Tysons Corner Center #7966, McLean, VA 22102- 4500, USA</div>', { className: 'blackPopup' }).addTo(this.emap)
     },
     drawEsri: function () {
       esriLoader.loadModules([
