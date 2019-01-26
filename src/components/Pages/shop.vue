@@ -100,6 +100,17 @@ export default {
         L.marker([lat, long], { icon: icon }).bindPopup('<div class="' + panel + '">' + stores[i]['Title'] + '<br/>' + stores[i]['Address'] + '</div>', { className: cls }).addTo(this.emap)
       }
 
+      var searchControl = L.esri.Geocoding.geosearch().addTo(this.emap)
+
+      var results = L.layerGroup().addTo(this.emap)
+
+      searchControl.on('results', function (data) {
+        results.clearLayers();
+        for (var i = data.results.length - 1; i >= 0; i--) {
+          results.addLayer(L.marker(data.results[i].latlng));
+        }
+      });
+
       // L.marker([40.088270, -75.391740], { icon: this.redicon }).bindPopup('<div class="redPopupPanel">King of Prussia Mall. 160 N Gulph Rd #1150, King of Prussia, PA 19406, USA</div>', { className: 'redPopup'}).addTo(this.emap)
 
       // L.marker([38.863340, -77.060500], { icon: this.blackicon }).bindPopup('<div class="blackPopupPanel">Fashion Centre. 4907, 1100 S Hayes St #0G07B, Arlington, VA 22202, USA</div>', { className: 'blackPopup' }).addTo(this.emap)
